@@ -19,7 +19,7 @@ export default function Home({route}){
     const[dateSold, setDateSold] = useState([])
     const navigation = useNavigation()
     
-    async function readNews(){
+    /*async function readNews(){
         const news = []
         const querySnapshot = await getDocs(collection(db, "news"));
         querySnapshot.forEach((doc) => {
@@ -87,7 +87,7 @@ export default function Home({route}){
             })  
         })    
         setDateSold([...sold])
-    }
+    }*/
 
     useEffect(() => {
         readNews()
@@ -96,7 +96,7 @@ export default function Home({route}){
         readSold()
     }, [route])
     
-    if(dateInterest.length < 6){
+    /*if(dateInterest.length < 6){
         return(
             <View style={{flex: 1, alignItems: "center", justifyContent: 'center'}}>
                 
@@ -104,7 +104,7 @@ export default function Home({route}){
             </View>
         )
         
-    }
+    }*/
     
     return(
         <View style={{backgroundColor: '#D7D7D7'}}>

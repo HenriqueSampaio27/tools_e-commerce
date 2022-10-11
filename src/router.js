@@ -36,8 +36,7 @@ function Router(){
                 name= "registration"
                 component={Registration}
                 options= {{
-                    title: 'Cadastro',
-                    headerTintColor: 'white'
+                    headerShown: false
                 }}
                 
                 />
