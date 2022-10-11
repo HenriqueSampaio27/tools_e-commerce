@@ -11,100 +11,23 @@ import New from '../componets/New'
 import { useNavigation } from "@react-navigation/native"
 import db from "../connection/firebaseConnection"
 import { collection, getDocs } from "firebase/firestore"
+import {tools} from "../../db"
 
 export default function Home({route}){
-    const[dateNews, setDateNews] = useState([])
-    const[dateInterest, setDateInterest] = useState([])
-    const[dateWanted, setDateWanted] = useState([])
-    const[dateSold, setDateSold] = useState([])
+    const[dateNews, setDateNews] = useState(tools)
+    const[dateInterest, setDateInterest] = useState(tools)
+    const[dateWanted, setDateWanted] = useState(tools)
+    const[dateSold, setDateSold] = useState(tools)
     const navigation = useNavigation()
     
-    /*async function readNews(){
-        const news = []
-        const querySnapshot = await getDocs(collection(db, "news"));
-        querySnapshot.forEach((doc) => {
     
-            news.push({
-                id: doc.id,
-                name: doc.data().name,
-                price: doc.data().price,
-                description: doc.data().description,
-                image1: doc.data().image1,
-                image2: doc.data().image2,
-                image3: doc.data().image3
-            })  
-        })    
-        setDateNews([...news])
-    }
-    
-    async function readInterest(){
-        const interest = []
-        const querySnapshot = await getDocs(collection(db, "interest"));
-        querySnapshot.forEach((doc) => {
-    
-            interest.push({
-                id: doc.id,
-                name: doc.data().name,
-                price: doc.data().price,
-                description: doc.data().description,
-                image1: doc.data().image1,
-                image2: doc.data().image2,
-                image3: doc.data().image3
-            })  
-        })    
-        setDateInterest([...interest])
-    }
-
-    async function readWanted(){
-        const wanted = []
-        const querySnapshot = await getDocs(collection(db, "wanted"));
-        querySnapshot.forEach((doc) => {
-            wanted.push({
-                id: doc.id,
-                name: doc.data().name,
-                price: doc.data().price,
-                description: doc.data().description,
-                image1: doc.data().image1,
-                image2: doc.data().image2,
-                image3: doc.data().image3
-            })  
-        })    
-        setDateWanted([...wanted])
-    }
-
-    async function readSold(){
-        const sold = []
-        const querySnapshot = await getDocs(collection(db, "sold"));
-        querySnapshot.forEach((doc) => {
-            sold.push({
-                id: doc.id,
-                name: doc.data().name,
-                price: doc.data().price,
-                description: doc.data().description,
-                image1: doc.data().image1,
-                image2: doc.data().image2,
-                image3: doc.data().image3
-            })  
-        })    
-        setDateSold([...sold])
-    }*/
 
     useEffect(() => {
-        readNews()
-        readInterest()
-        readWanted()
-        readSold()
+        //readNews()
+        //readInterest()
+        //readWanted()
+        //readSold()
     }, [route])
-    
-    /*if(dateInterest.length < 6){
-        return(
-            <View style={{flex: 1, alignItems: "center", justifyContent: 'center'}}>
-                
-                <Text style={{fontSize: 20, color: 'black', marginTop: 10}}>Carregando...</Text>
-            </View>
-        )
-        
-    }*/
     
     return(
         <View style={{backgroundColor: '#D7D7D7'}}>
