@@ -17,7 +17,7 @@ function Router(){
 
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="transitionScreen">
+            <Stack.Navigator initialRouteName="login">
                 <Stack.Screen
                 name="transitionScreen"
                 component={TransitionScreen}
