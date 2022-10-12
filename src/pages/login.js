@@ -83,76 +83,78 @@ export default function Login(){
 
     return(
         <View>
-                <View style={styles.headerTitle}>
-                    <Text style={styles.title}>REI DAS</Text>
-                    <Text style={styles.title}>FERRAMENTAS</Text>
-                </View>
-                <ScrollView style={{backgroundColor: '#2799F3'}}>
-                    <View style={styles.header}>    
-                        <Text style={styles.welcome}>Bem-vindo de volta</Text>
-                        <Text style={styles.bottomWelcome}>Informe seu login</Text>
-                    <View style={styles.headerInput}>
-                        <IconZ name="email" size={20} color="black"/>
-                        <TextInput 
-                        style={styles.inputEmail}
-                        placeholder= "Email"
-                        placeholderTextColor={"#898787"}
-                        keyboardType="email-address"
-                        onChangeText={(text) => setEmail(text)}
-                        value={email}
-                        ></TextInput>
-                    </View>
-                    <View style={styles.headerInput}>
-                        <IconM name="key" size={20} color="black"/> 
-                        <TextInput 
-                        style={styles.inputPassword}
-                        placeholder= "Senha"
-                        placeholderTextColor={"#898787"}
-                        keyboardType="default"
-                        secureTextEntry= {hidePass}
-                        onChangeText={(text) => setPassword(text)}
-                        value={password}
-                        ></TextInput>
-                        <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
-                            {hidePass? <IconE name="eye" size={20} color="#898787"/>:
-                            <IconE name="eye-with-line" size={20} color="#898787"/>}
+            <View style={styles.headerTitle}>
+                <Text style={styles.title}>REI DAS</Text>
+                <Text style={styles.title}>FERRAMENTAS</Text>
+            </View>
+            <View style={{backgroundColor: '#2799F3', height: "87%"}}>
+                <ScrollView style={{backgroundColor: 'white', height: "100%", borderTopLeftRadius: 50, borderTopRightRadius: 50,}}>
+                        <View style={styles.header}>    
+                            <Text style={styles.welcome}>Bem-vindo de volta</Text>
+                            <Text style={styles.bottomWelcome}>Informe seu login</Text>
+                        <View style={styles.headerInput}>
+                            <IconZ name="email" size={20} color="black"/>
+                            <TextInput 
+                            style={styles.inputEmail}
+                            placeholder= "Email"
+                            placeholderTextColor={"#898787"}
+                            keyboardType="email-address"
+                            onChangeText={(text) => setEmail(text)}
+                            value={email}
+                            ></TextInput>
+                        </View>
+                        <View style={styles.headerInput}>
+                            <IconM name="key" size={20} color="black"/> 
+                            <TextInput 
+                            style={styles.inputPassword}
+                            placeholder= "Senha"
+                            placeholderTextColor={"#898787"}
+                            keyboardType="default"
+                            secureTextEntry= {hidePass}
+                            onChangeText={(text) => setPassword(text)}
+                            value={password}
+                            ></TextInput>
+                            <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
+                                {hidePass? <IconE name="eye" size={20} color="#898787"/>:
+                                <IconE name="eye-with-line" size={20} color="#898787"/>}
+                            </TouchableOpacity>
+                        </View>
+
+                        {
+                            (error === "")? <View/> : <View style ={{flexDirection: "row"}}> 
+            
+                            <Text style = {styles.error}>{error}</Text>
+                            </View>
+                        }
+                        
+                        <TouchableOpacity style={styles.buttonLogin} onPress={() => verificationLogin()}>
+                            <Text style={styles.textLogin}>Entrar</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.forgotPassword} onPress={() => navigation.navigate("recoverPassword")}>
+                            <Text style={styles.textForgotPassword}>Esqueceu a senha?</Text>
+                        </TouchableOpacity>
+                        
+                        <View style={{flexDirection: "row", marginTop: 35, width: '90%'}}>
+                            <View style={styles.viewLeft}></View>
+                            <Text style={styles.text_ou}>ou</Text>
+                            <View style={styles.viewRigth}></View>
+                        </View>
+                        
+                        <TouchableOpacity style={styles.newAccount} onPress={()=>navigation.navigate("registration")}>
+                            <Text style={styles.textnewAccount}>Criar conta</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.google} >
+                            <Image
+                            style={{width: 40, height: 40}}
+                            source={require("../assets/image/icon_google.png")}
+                            resizeMode= 'contain'
+                            />   
+                            <Text style={styles.textGoogle}>Continuar com o Google</Text>
                         </TouchableOpacity>
                     </View>
-
-                    {
-                        (error === "")? <View/> : <View style ={{flexDirection: "row"}}> 
-        
-                        <Text style = {styles.error}>{error}</Text>
-                        </View>
-                    }
-                    
-                    <TouchableOpacity style={styles.buttonLogin} onPress={verificationLogin}>
-                        <Text style={styles.textLogin}>Entrar</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.forgotPassword}>
-                        <Text style={styles.textForgotPassword}>Esqueceu a senha?</Text>
-                    </TouchableOpacity>
-                    
-                    <View style={{flexDirection: "row", marginTop: 35, width: '90%'}}>
-                        <View style={styles.viewLeft}></View>
-                        <Text style={styles.text_ou}>ou</Text>
-                        <View style={styles.viewRigth}></View>
-                    </View>
-                    
-                    <TouchableOpacity style={styles.newAccount} onPress={()=>navigation.navigate("registration")}>
-                        <Text style={styles.textnewAccount}>Criar conta</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={styles.google} >
-                        <Image
-                        style={{width: 40, height: 40}}
-                        source={require("../assets/image/icon_google.png")}
-                        resizeMode= 'contain'
-                        />   
-                        <Text style={styles.textGoogle}>Continuar com o Google</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>  
+                </ScrollView>
+            </View>
         </View>
     )
 }
@@ -300,7 +302,7 @@ const styles = StyleSheet.create({
         height: 55,
         padding: 2,
         marginTop: 25,
-        marginBottom: 120,
+        marginBottom: 20,
         borderRadius: 20,
         borderWidth: 0.5,
         borderColor: "#888686"

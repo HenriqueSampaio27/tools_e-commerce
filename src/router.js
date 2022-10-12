@@ -10,6 +10,7 @@ import Search from "./pages/search"
 import Login from "./pages/login"
 import Registration from "./pages/registration"
 import TransitionScreen from "./pages/transitionScreen"
+import RecoverPassword from "./pages/recoverPassword"
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +39,13 @@ function Router(){
                 options= {{
                     headerShown: false
                 }}
-                
+                />
+                <Stack.Screen
+                name="recoverPassword"
+                component={RecoverPassword}
+                options={{
+                    headerShown: false
+                }}
                 />
                 <Stack.Screen 
                 name= "home" 
