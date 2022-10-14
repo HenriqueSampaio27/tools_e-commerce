@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, Image, StyleSheet, TextInput, TouchableOpacity } from "react-native"
+import { View, Text, ScrollView, Image, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator } from "react-native"
 import {getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup} from 'firebase/auth'
 import { useNavigation } from "@react-navigation/native"
 import { firebase } from "../connection/firebaseConnection";
@@ -11,6 +11,7 @@ export default function Login(){
 
     const navigation = useNavigation()
     const auth = getAuth(firebase)
+    const[loading, setLoading] = useState(false)
     //const provider = new GoogleAuthProvider()
 
     const[hidePass, setHidePass] = useState(true)
@@ -19,9 +20,9 @@ export default function Login(){
     const[error, setError]= useState("")
 
     async function verificationLogin(){
-        let success
-        
+        let success = false
         if(email != "" && password != ""){
+            setLoading(true)
             await signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 
@@ -42,8 +43,11 @@ export default function Login(){
                 }
                 
             });
+
             if(success == true){
                 navigation.navigate("home")
+            }else{
+                setLoading(false)
             } 
         }else{
             setError("Preencha todos os campos!")
@@ -130,6 +134,9 @@ export default function Login(){
                         <TouchableOpacity style={styles.buttonLogin} onPress={() => verificationLogin()}>
                             <Text style={styles.textLogin}>Entrar</Text>
                         </TouchableOpacity>
+
+                        {loading?<ActivityIndicator style={{marginTop: 10}} size={30} color="#4E66EB"/>: null}
+
                         <TouchableOpacity style={styles.forgotPassword} onPress={() => navigation.navigate("recoverPassword")}>
                             <Text style={styles.textForgotPassword}>Esqueceu a senha?</Text>
                         </TouchableOpacity>
