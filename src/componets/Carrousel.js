@@ -40,18 +40,18 @@ export default function Carrousel(props){
                 scrolled = 0
             }
 
-            flatList.scrollToOffset({
+            this.flatList.scrollToOffset({
                 animated: true, offset: scrollValue
             })            
         }, 5000)
     }
-    infiteScroll()
+    //infiteScroll()
     
     return (
         <View>
             <FlatList
                 horizontal 
-                ref={(ref) => flatList = ref}
+                ref={(ref) => this.flatList = ref}
                 showsHorizontalScrollIndicator={false}
                 data={date}
                 keyExtractor={item => item.id}

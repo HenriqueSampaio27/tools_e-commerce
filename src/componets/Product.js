@@ -1,8 +1,7 @@
 import react from "react"
 import {View,Text, TouchableOpacity, Image, StyleSheet} from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
 
-export default function New(props){
+export default function Product(props){
     
     return(
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
@@ -14,13 +13,9 @@ export default function New(props){
                 <Text style={styles.title} numberOfLines={2} ellipsizeMode={'tail'}>{props.name}</Text>
             </View>
             
-            <View style ={{flexDirection: 'row', width: '100%'}}>
-                <View style={styles.footer}>
-                    <Text style={styles.price}>R$ {props.price}</Text>
-                </View>
-                <TouchableOpacity style={styles.favorites}>
-                    <Icon name="favorite-border" color="red" size={30}/>
-                </TouchableOpacity>
+            <View style ={{width: '100%'}}>
+                <Text style={styles.price}>R$ {props.price}</Text>
+                <Text style={styles.sold}>{props.sold} vendidos</Text>
             </View>
         </TouchableOpacity>
         
@@ -31,22 +26,21 @@ export default function New(props){
 const styles = StyleSheet.create({
     container:{
         backgroundColor: "#ffff",
-        marginBottom: 8,
-        marginTop: 20,
-        marginRight: 15,
-        marginLeft: 10,
+        marginBottom: 5,
+        marginTop: 10,
+        marginRight: 10,
         padding: 15,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
         elevation: 2,
-        width: 200,
-        height: 270
+        width: 180,
+        height: 300
     },
     cover:{
         borderRadius: 10,
         height: 150,
-        width: 150
+        width: 145
     },
     content:{
         marginLeft: 5,
@@ -57,21 +51,21 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 16,
         color: "black",
+        height: 40,
         fontFamily: "Montserrat-SemiBold"
-    },
-    footer:{
-        flexDirection: 'row',
-        width: "80%",
-        alignItems: 'center'
     },
     price:{
         fontSize: 20,
-        marginLeft: 5,
         color: 'black',
+        width: "100%",
         fontFamily: 'Montserrat-SemiBold'
     },
-    favorites:{
-        width: "20%"
+    sold:{
+        color: '#5B5A5A',
+        fontFamily: "Montserrat-Medium",
+        fontSize: 15,
+        width: "100%",
+        marginTop: 10
     }
 
 })

@@ -16,6 +16,7 @@ import db from "../connection/firebaseConnection"
 import { collection, getDocs } from "firebase/firestore"
 import {tools, tools2} from "../../db"
 import Carrousel from "../componets/Carrousel"
+import Product from "../componets/Product"
 
 const {width, height} = Dimensions.get("screen")
 
@@ -30,7 +31,12 @@ export default function Home({route}){
     const[date, setDate] = useState(tools2)
     const navigation = useNavigation()
     
-    
+
+    let category = ["dateSold", "Eletricos", "Chaves", "Eletrônicos", "Bombas", "Mangueiras"]
+    let categoryDate
+    function loadCategory(categoryName){
+        categoryDate = categoryName
+    }
 
     useEffect(() => {
         //readNews()
@@ -43,7 +49,7 @@ export default function Home({route}){
         <View>
             <View style={styles.headerTitle}>
                 <View style={{flexDirection: 'row'}}>
-                    <TouchableOpacity style={{width: "35%", alignItems: "center", paddingTop: 5}}>
+                    <TouchableOpacity style={{width: "35%", alignItems: "center", paddingTop: 5}} onPress={() => {}}>
                         <IconI name="list" size={40} color="white"/>
                     </TouchableOpacity>
                     <Text style={styles.titleMain}>{"\t\t\t\t\t\t"}REI DAS{"\n"}FERRAMENTAS</Text>
@@ -56,20 +62,23 @@ export default function Home({route}){
                     <IconI name="search" size={25} color="black"/>
                 </TouchableOpacity>
             </View>
-            <View style={{backgroundColor: "#2799F3"}}>
-                <ScrollView 
-                style={{backgroundColor: "#F0EEEE", borderTopLeftRadius: 50, borderTopRightRadius: 50}}
-                showsVerticalScrollIndicator={false}>
-                    <View style={styles.carrousel}>
-                        <Carrousel date={date}/>
-                    </View>
-                    <View style= {styles.contentnew}> 
-                        <Text style={styles.title}>Novidades</Text>
-                    </View>
+            <ScrollView style={{height: "84%"}}>
+                <View style={{backgroundColor: "#2799F3"}}>
+                    <ScrollView 
+                    style={{backgroundColor: "#F0EEEE", borderTopLeftRadius: 50, borderTopRightRadius: 50, height: "100%"}}
+                    showsVerticalScrollIndicator={false}>
+                        <View style={styles.carrousel}>
+                            <Carrousel date={date}/>
+                        </View>
+
+                        <View style= {styles.contentnew}>
+                            <Text style={styles.title}>Destaques</Text>
+                        </View>
                         <FlatList 
                         horizontal 
                         showsHorizontalScrollIndicator={false}
-                        data={dateNews}
+                        data={dateInterest}
+                        extraData={dateInterest}
                         keyExtractor={item => item.id}
                         renderItem={({item}) => 
                             <New
@@ -77,72 +86,86 @@ export default function Home({route}){
                             name= {item.name}
                             price= {item.price}
                             onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                        image1: item.image1, image2: item.image2, image3: item.image3, dateSold: dateSold})}
+                                                                        image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
                             />
                         }
                         />
 
-                    <View style= {styles.contentnew2}>
-                        <Text style={styles.title}>Você pode se interessar</Text>
-                    </View>
-                    <FlatList 
-                    horizontal 
-                    showsHorizontalScrollIndicator={false}
-                    data={dateInterest}
-                    extraData={dateInterest}
-                    keyExtractor={item => item.id}
-                    renderItem={({item}) => 
-                        <New
-                        cover= {item.image1}
-                        name= {item.name}
-                        price= {item.price}
-                        onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                    image1: item.image1, image2: item.image2, image3: item.image3, dateSold: dateSold})}
+                        <View style= {styles.contentnew}>
+                            <Text style={styles.title}>Você pode se interessar</Text>
+                        </View>
+                        <FlatList 
+                        horizontal 
+                        showsHorizontalScrollIndicator={false}
+                        data={date}
+                        extraData={date}
+                        keyExtractor={item => item.id}
+                        renderItem={({item}) => 
+                            <New
+                            cover= {item.image1}
+                            name= {item.name}
+                            price= {item.price}
+                            onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
+                                                                        image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
+                            />
+                        }
                         />
-                    }
-                    />
 
-                    <View style= {styles.contentnew2}>
-                        <Text style={styles.title}>Mais procurados</Text>
-                    </View>
-                    <FlatList 
-                    horizontal 
-                    showsHorizontalScrollIndicator={false}
-                    data={dateWanted}
-                    extraData={dateWanted}
-                    keyExtractor={item => item.id}
-                    renderItem={({item}) => 
-                        <New
-                        cover= {item.image1}
-                        name= {item.name}
-                        price= {item.price}
-                        onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                    image1: item.image1, image2: item.image2, image3: item.image3, dateSold: dateSold})}
+                        <View style= {styles.contentnew}>
+                            <Text style={styles.title}>Mais vendidos</Text>
+                        </View>
+                        <FlatList 
+                        horizontal 
+                        showsHorizontalScrollIndicator={false}
+                        data={dateSold}
+                        extraData={dateSold}
+                        keyExtractor={item => item.id}
+                        renderItem={({item}) => 
+                            <New
+                            cover= {item.image1}
+                            name= {item.name}
+                            price= {item.price}
+                            onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
+                                                                        image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, Sold: dateSold})}
+                            />
+                        }
                         />
-                    }
-                    />
 
-                    <View style= {styles.contentnew2}>
-                        <Text style={styles.title}>Mais vendidos</Text>
-                    </View>
-                    <FlatList 
-                    horizontal 
-                    showsHorizontalScrollIndicator={false}
-                    data={dateSold}
-                    extraData={dateSold}
-                    keyExtractor={item => item.id}
-                    renderItem={({item}) => 
-                        <New
-                        cover= {item.image1}
-                        name= {item.name}
-                        price= {item.price}
-                        onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                    image1: item.image1, image2: item.image2, image3: item.image3, dateSold: dateSold})}
+                        <FlatList
+                        horizontal
+                        showsHorizontalScrollIndicator= {false}
+                        data={category}
+                        keyExtractor={(item, index) => index}
+                        renderItem={({item, index}) => {
+                            return(
+                                <TouchableOpacity style={styles.categoryItens} onPress={() => loadCategory(category[index])}>
+                                    <Text style={styles.categoryText}>{category[index]}</Text>
+                                </TouchableOpacity>
+                            )
+                        }}
                         />
-                    }
-                    />
-                </ScrollView>
-            </View>
+                        <ScrollView horizontal style={{width: '100%', margin: 10}}>
+                            <FlatList 
+                            vertical
+                            data={dateSold}
+                            numColumns={2}
+                            keyExtractor={item => item.id}
+                            renderItem={({item}) => 
+                                <Product
+                                cover= {item.image1}
+                                name= {item.name}
+                                price= {item.price}
+                                sold = {item.sold}
+                                onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
+                                />
+                            }
+                            />
+                        </ScrollView>
+
+                    </ScrollView>
+                </View>
+            </ScrollView>
         </View>
     )
 }
@@ -192,19 +215,29 @@ const styles = StyleSheet.create({
     contentnew:{
         flexDirection: 'row',
         width: '100%',
-        alignItems: 'center'
-    },
-    contentnew2:{
-        flexDirection: 'row',
-        width: '100%',
         alignItems: 'center',
         marginTop: 10
     },
     title:{
         paddingHorizontal: 15,
-        fontSize: 20,
+        fontSize: 18,
         color: "black",
-        marginTop:10,
-        fontWeight: "500"
+        fontFamily: "Montserrat-SemiBold",
+        marginTop:10
+    },
+    categoryItens:{
+        height: 28,
+        width: 125,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#2799F3',
+        margin: 5,
+        marginTop: 10,
+        borderRadius: 20
+    },
+    categoryText:{
+        color: 'white',
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 15
     }
 })
