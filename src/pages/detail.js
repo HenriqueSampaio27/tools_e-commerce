@@ -47,7 +47,7 @@ export default function Detail({route}){
     }
 
     function backHome(){
-        navigation.navigate("home", {update: 'update'})
+        navigation.navigate("drawer", {update: 'update'})
         return true
     }
 

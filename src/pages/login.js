@@ -20,6 +20,7 @@ export default function Login(){
     const[error, setError]= useState("")
 
     async function verificationLogin(){
+        navigation.navigate("drawer")
         let success = false
         if(email != "" && password != ""){
             setLoading(true)
