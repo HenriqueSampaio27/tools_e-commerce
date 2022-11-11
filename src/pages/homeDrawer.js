@@ -42,7 +42,6 @@ export default function Home({route}){
     }
 
     function renderCategory(item, index){
-        console.log(indexCate, index)
         
         if(indexCate == index){
             return(

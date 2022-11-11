@@ -1,9 +1,14 @@
-import react from "react"
+import react, { useState } from "react"
 import {View,Text, TouchableOpacity, Image, StyleSheet} from 'react-native'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import IconM from 'react-native-vector-icons/MaterialIcons'
 
 export default function New(props){
+    const[favoriteIcon, setFavoriteIcon] = useState(false)
     
+    function passFavorite(){
+        setFavoriteIcon(!favoriteIcon)
+    }
+
     return(
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
             <Image style={styles.cover}
@@ -18,8 +23,11 @@ export default function New(props){
                 <View style={styles.footer}>
                     <Text style={styles.price}>R$ {props.price}</Text>
                 </View>
-                <TouchableOpacity style={styles.favorites}>
-                    <Icon name="favorite-border" color="red" size={30}/>
+                <TouchableOpacity style={styles.favorites} onPress={() => passFavorite()}>
+                    {
+                        favoriteIcon? <IconM name="favorite" color="red" size={30}/>:
+                        <IconM name="favorite-border" color="black" size={30}/>
+                    }
                 </TouchableOpacity>
             </View>
         </TouchableOpacity>

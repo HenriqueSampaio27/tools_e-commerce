@@ -102,8 +102,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center' 
     }
 })
-
-
-//onScroll={Animated.event(
-  //  [{ nativeEvent: { contentOffset: { x: scrollX } } }]
-//)}

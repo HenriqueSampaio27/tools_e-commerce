@@ -8,17 +8,13 @@ export default function SwiperComponent(props){
         <Swiper 
         style={styles.wrapper} 
         dotStyle={{
-            backgroundColor: '#D7D7D7',
-            borderColor: 'black',
-            borderWidth: 1,
+            backgroundColor: '#2799F3',
             width: 10,
             height: 10,
             borderRadius: 10
         }}
-        activeDotColor= 'black'
+        activeDotColor= 'blue'
         activeDotStyle={{
-            borderColor: 'black',
-            borderWidth: 1,
             width: 10,
             height: 10,
             borderRadius: 10
