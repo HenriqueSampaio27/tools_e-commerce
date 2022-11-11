@@ -18,6 +18,7 @@ import {tools, tools2} from "../../db"
 import Carrousel from "../componets/Carrousel"
 import Product from "../componets/Product"
 import {useDrawerStatus} from '@react-navigation/drawer'
+import { useSafeAreaFrame } from "react-native-safe-area-context"
 
 const {width, height} = Dimensions.get("screen")
 
@@ -32,22 +33,30 @@ export default function Home({route}){
     const[date, setDate] = useState(tools2)
     const navigation = useNavigation()
     const navigation2 = useDrawerStatus()
-    const[drawer, setDrawer] = useState(false)
-    
-    function activityDrawer(){
-        if(drawer == true){
-            return(
-                <View>
+    const[indexCate, setIndexCate] = useState(0)
 
-                </View>
-            )
-        }
+    let category = ["Todos", "Eletricos", "Chaves", "Eletrônicos", "Bombas", "Mangueiras"]
+    //let categoryDate
+    function loadCategory(categoryName){
+    //    categoryDate = categoryName
     }
 
-    let category = ["dateSold", "Eletricos", "Chaves", "Eletrônicos", "Bombas", "Mangueiras"]
-    let categoryDate
-    function loadCategory(categoryName){
-        categoryDate = categoryName
+    function renderCategory(item, index){
+        console.log(indexCate, index)
+        
+        if(indexCate == index){
+            return(
+                <TouchableOpacity style={styles.categoryItens} onPress={() => {loadCategory(category[index]), setIndexCate(index)}}>
+                    <Text style={styles.categoryText}>{category[index]}</Text>
+                </TouchableOpacity>
+            ) 
+        }else{
+            return(
+                <TouchableOpacity style={styles.categoryItensNull} onPress={() => {loadCategory(category[index]), setIndexCate(index)}}>
+                    <Text style={styles.categoryTextNull}>{category[index]}</Text>
+                </TouchableOpacity>
+            )
+        }
     }
 
     useEffect(() => {
@@ -145,18 +154,12 @@ export default function Home({route}){
                             />
 
                             <FlatList
-                            horizontal
-                            showsHorizontalScrollIndicator= {false}
                             data={category}
-                            keyExtractor={(item, index) => index}
-                            renderItem={({item, index}) => {
-                                return(
-                                    <TouchableOpacity style={styles.categoryItens} onPress={() => loadCategory(category[index])}>
-                                        <Text style={styles.categoryText}>{category[index]}</Text>
-                                    </TouchableOpacity>
-                                )
-                            }}
+                            key={(item,index) => index}
+                            horizontal
+                            renderItem={({item, index}) => renderCategory(item, index)}
                             />
+
                             <ScrollView horizontal style={{width: '100%', margin: 10}}>
                                 <FlatList 
                                 vertical
@@ -246,11 +249,26 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor: '#2799F3',
         margin: 5,
-        marginTop: 10,
+        marginTop: 15,
         borderRadius: 20
     },
     categoryText:{
         color: 'white',
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 15
+    },
+    categoryItensNull:{
+        height: 28,
+        width: 125,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        margin: 5,
+        marginTop: 15,
+        borderRadius: 20
+    },
+    categoryTextNull:{
+        color: 'black',
         fontFamily: 'Montserrat-Bold',
         fontSize: 15
     }
