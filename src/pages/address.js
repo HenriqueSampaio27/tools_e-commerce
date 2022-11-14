@@ -1,6 +1,7 @@
 import React, {useState ,useEffect} from "react"
-import {View, Text, StyleSheet, TextInput, TouchableOpacity, Alert} from 'react-native'
+import {View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView} from 'react-native'
 import { useNavigation } from "@react-navigation/native"
+import IconI from 'react-native-vector-icons/Ionicons'
 
 export default function Address({route}){
     const[state, setState] = useState(false)
@@ -71,7 +72,7 @@ export default function Address({route}){
     }
     const screen = route.params?.screen
     function passAddress(){
-        if(logradouro != ''){
+        if(cep != ''){
         navigation.navigate(screen, {cep: cep, place: logradouro, shipping: shipping, date: date, txtShipping: true, 
                             image1: route.params?.image1, image2: route.params?.image2, image3: route.params?.image3, 
                             name:route.params?.name, price:route.params?.price, description:route.params?.description, screen: 'address', dateSold: route.params?.dateSold})
@@ -119,127 +120,173 @@ export default function Address({route}){
     }
     
     return(
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.info}>Informe seu endereço</Text>
-                <TextInput 
-                    onChangeText={text =>{ 
-                        setCep(text)
-                        if(text.length == 8){
-                            recebeDados(text)
-                            calcShipping()
-                            getDateCurrent() 
-                        }
-                    }}
-                    maxLength = {8}
-                    style={styles.imput}
-                    placeholderTextColor= '#808080' 
-                    placeholder="Digite seu Cep..."
-                    keyboardType="numeric"
-                    value = {cep}
-                    >
-                </TextInput>
-                {state? <Text style={styles.setText}>{uf}</Text> : <Text style={styles.text}>Estado</Text>}
-                {state? <Text style={styles.setText}>{localidade}</Text> : <Text style={styles.text}>Cidade</Text>}
-                {state? <Text style={styles.setText}>{bairro}</Text> : <Text style={styles.text}>Bairro</Text>}
-                {state? <Text style={styles.setText}>{logradouro}</Text> : <Text style={styles.text}>Rua</Text>}
-                <TextInput 
-                style={styles.imput} 
-                keyboardType="numeric" 
-                placeholderTextColor= '#808080' 
-                placeholder= 'Nº'
-                onChange={(text) => {setNumber(text)}}
-                value = {number}
-                > 
-                </TextInput>
-                <TextInput 
-                style={styles.imput}
-                onChange= {(text) => {setComplemento(text)}} 
-                placeholderTextColor= '#808080' 
-                placeholder= 'Complemento'
-                value = {complemento}
-                >
-                </TextInput>              
+        <View>
+            <View style={styles.headerTitle}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <IconI name="chevron-back-circle" size={28} color="white"/>
+                </TouchableOpacity>
+                <Text style={styles.title}>Endereço</Text>
             </View>
-            <View style={{width: "100%", height: '7%', flexDirection: 'row'}}>
-                <TouchableOpacity style ={styles.buttonClear} onPress={() => clear()}>
-                    <Text style={styles.textClear}>Limpar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style ={styles.buttonSave} onPress={() => passAddress()}>
-                    <Text style={styles.textSave}>Salvar</Text>
-                </TouchableOpacity>
+            <View style={{backgroundColor: '#2799F3', height: "88%"}}>
+                <ScrollView style={{backgroundColor: 'white', height: "100%", borderTopLeftRadius: 50, borderTopRightRadius: 50}}>
+                    <View style={{alignItems: 'center'}}>
+                        <View style={styles.header}>
+                            <Text style={styles.info}>Informe seu endereço</Text>
+                            <TextInput 
+                                onChangeText={text =>{ 
+                                    setCep(text)
+                                    if(text.length == 8){
+                                        recebeDados(text)
+                                        calcShipping()
+                                        getDateCurrent() 
+                                    }
+                                }}
+                                maxLength = {8}
+                                style={styles.input}
+                                placeholderTextColor= '#808080' 
+                                placeholder="Digite seu CEP"
+                                keyboardType="numeric"
+                                value = {cep}
+                                >
+                            </TextInput>
+                            <TextInput 
+                                style={styles.input}
+                                onChangeText={(text) => setLogradouro(text)}
+                                placeholderTextColor= '#808080' 
+                                placeholder="Logradouro"
+                                keyboardType="default"
+                                value = {logradouro}
+                                >
+                            </TextInput>
+                            <TextInput 
+                                style={styles.input}
+                                onChangeText={(text) => setBairro(text)}
+                                placeholderTextColor= '#808080' 
+                                placeholder="Bairro"
+                                keyboardType="default"
+                                value = {bairro}
+                                >
+                            </TextInput>
+                            <TextInput 
+                            style={styles.input} 
+                            onChangeText={(text) => setNumber(text)}
+                            keyboardType="numeric" 
+                            placeholderTextColor= '#808080' 
+                            placeholder= 'Nº'
+                            value = {number}
+                            > 
+                            </TextInput>
+                            <TextInput 
+                                style={styles.input}
+                                onChangeText={(text) => setLocalidade(text)}
+                                placeholderTextColor= '#808080' 
+                                placeholder="Cidade"
+                                keyboardType="default"
+                                value = {localidade}
+                                >
+                            </TextInput>
+                            <TextInput 
+                                style={styles.input}
+                                onChangeText={(text) => setUf(text)}
+                                placeholderTextColor= '#808080' 
+                                placeholder="Estado"
+                                keyboardType="default"
+                                value = {uf}
+                                >
+                            </TextInput>
+                            <TextInput 
+                            style={styles.input}
+                            onChange= {(text) => {setComplemento(text)}} 
+                            placeholderTextColor= '#808080' 
+                            placeholder= 'Complemento'
+                            value = {complemento}
+                            >
+                            </TextInput>              
+                        </View>
+
+                        <View style={{width: "90%", alignItems: 'center', marginBottom: 20}}>
+                        <TouchableOpacity style ={styles.buttonSave} onPress={() => passAddress()}>
+                                <Text style={styles.textSave}>Salvar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style ={styles.buttonClear} onPress={() => clear()}>
+                                <Text style={styles.textClear}>Limpar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </ScrollView>
             </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor: '#D7D7D7'
+    headerTitle:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        height: "12%",
+        backgroundColor: '#2799F3'
+    },
+    title:{
+        fontFamily: 'Montserrat-Bold',
+        color: 'white',
+        width: "50%",
+        marginLeft: 85,
+        fontSize: 20
     },
     header:{
         width: '100%',
-        height: '93%'
+        alignItems: 'center'
     },
     info:{
-        fontSize: 14,
+        fontSize: 16,
         color: 'black',
-        marginLeft: 15,
-        marginBottom: 10,
-        marginTop: 10
+        fontFamily: "Montserrat-Medium",
+        marginBottom: 25,
+        marginTop: 28,
+        width: '80%',
     },
-    imput:{
+    input:{
+        backgroundColor: "#E1E1E1",
+        color: "black", 
+        fontSize: 15,
+        fontFamily: "Montserrat-SemiBold",
+        width: '90%',
+        height: 55,
+        marginBottom: 15,
         paddingLeft: 15,
-        backgroundColor: "white",
-        fontSize: 14,
-        width: '100%',
-        height: 40,
-        marginBottom: 5,
-        elevation: 2
-    },
-    text:{
-        paddingLeft: 15,
-        paddingTop: 10,
-        backgroundColor: "white",
-        fontSize: 14,
-        width: '100%',
-        height: 40,
-        marginBottom: 5,
-        color: '#808080',
-        elevation: 2
-    },
-    setText:{
-        paddingLeft: 15,
-        paddingTop: 10,
-        backgroundColor: "white",
-        fontSize: 14,
-        width: '100%',
-        height: 40,
-        marginBottom: 5,
-        color: 'black',
-        elevation: 2
+        borderRadius: 20
+
     },
     buttonSave:{
-        width: "50%",
-        height: "100%",
-        backgroundColor: 'red',
-        alignItems: 'center'
+        width: "100%",
+        height: 55,
+        backgroundColor: '#4E66EB',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        marginTop: 25
     },
     textSave:{
-        fontSize: 20,
-        color: 'white',
-        padding: 10
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 25,
+        color: 'white'
     },
     buttonClear:{
-        width: "50%",
-        height: "100%",
+        width: "100%",
+        height: 55,
         backgroundColor: 'white',
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+        marginTop: 10,
+        borderColor: '#4E66EB',
+        borderWidth: 1.5
     },
     textClear:{
-        fontSize: 20,
-        color: 'red',
-        padding: 10
+        fontFamily: 'Montserrat-SemiBold',
+        fontSize: 25,
+        color: '#4E66EB',
     }
 })

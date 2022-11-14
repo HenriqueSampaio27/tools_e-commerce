@@ -8,7 +8,7 @@ export const tools = [
         "image2": "https://m.media-amazon.com/images/I/41opfiDEyML._AC_SX522_.jpg",
         "image3": "https://m.media-amazon.com/images/I/41bvHtjmFXL._AC_SX522_.jpg",
         "entryDate": "19/08/2022",
-        "sold": "10"
+        "soldAmount": "10"
     },
     {
         "id": "2",
@@ -19,7 +19,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0142.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0143.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "19/09/2022",
-        "sold": "16"
+        "soldAmount": "16"
     },
     {
         "id": "3",
@@ -30,7 +30,7 @@ export const tools = [
         "image2": "https://http2.mlstatic.com/D_Q_NP_899096-MLB46446059828_062021-R.webp",
         "image3": "https://http2.mlstatic.com/D_Q_NP_889061-MLA48828576030_012022-R.webp",
         "entryDate": "20/08/2022",
-        "sold": "45"
+        "soldAmount": "45"
     },
     {
         "id": "4",
@@ -41,7 +41,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/2/206/12677/Jogo-de-Chaves-Combinadas-em-Milimetros--belzer-302402b2.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/2/206/12677/Jogo-de-Chaves-Combinadas-em-Milimetros--belzer-302402b3.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "19/08/2022",
-        "sold": "22"
+        "soldAmount": "22"
     },
     {
         "id": "5",
@@ -52,7 +52,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/2/688/18856/Chave-Torx-com-7-Pecas-T10-a-T40-vonder-35730100403.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/2/688/18856/Chave-Torx-com-7-Pecas-T10-a-T40-vonder-35730100404.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "02/09/2022",
-        "sold": "10"
+        "soldAmount": "10"
     },
     {
         "id": "6",
@@ -63,7 +63,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/19/189/76541/Chave-de-Teste-com-Ponta-Fenda-18-x-3-Po-tramontina-419001103.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/19/189/76541/Chave-de-Teste-com-Ponta-Fenda-18-x-3-Po-tramontina-419001104.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "30/08/2022",
-        "sold": "19"
+        "soldAmount": "19"
     },
     {
         "id": "7",
@@ -74,7 +74,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/21/230/4106/Martelete-Combinado-800W-220V-com-Maleta-makita-hr24703.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/21/230/4106/Martelete-Combinado-800W-220V-com-Maleta-makita-hr24704.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "15/08/2022",
-        "sold": "8"
+        "soldAmount": "8"
     },
     {
         "id": "8",
@@ -85,7 +85,7 @@ export const tools = [
         "image2": "https://a-static.mlcdn.com.br/90x90/martelete-rompedor-demolidor-furadeira-25j-sds-plus-1350w-com-maleta-gt963-lorben/focalouca/gt963-1/c1543e751ce7e0dc6549edd4c5f3b3f2.jpeg",
         "image3": "https://a-static.mlcdn.com.br/96x74/martelete-rompedor-demolidor-furadeira-25j-sds-plus-1350w-com-maleta-gt963-lorben/focalouca/gt963-1/c9701b8872a3a33c36611ee198d85f87.jpeg",
         "entryDate": "25/09/2022",
-        "sold": "6"
+        "soldAmount": "6"
     },
     {
         "id": "9",
@@ -96,7 +96,7 @@ export const tools = [
         "image2": "https://a-static.mlcdn.com.br/90x90/serra-circular-marmore-1200w-4-3-8-110mm-cotador-de-piso-m0400b-makita/takilocferram/9f56fbc6a61c11ec9f284201ac185055/79236cfb58b98bc32c53840f614d6815.jpeg",
         "image3": "https://a-static.mlcdn.com.br/800x560/serra-marmore-makita-1300w-4100nh3-zx2/takilocferram/9e5f381417dd11ecaf254201ac185013/391c1f8f86eb101a9cc80734831cb85a.jpeg",
         "entryDate": "10/08/2022",
-        "sold": "25"
+        "soldAmount": "25"
     },
     {
         "id": "10",
@@ -107,7 +107,7 @@ export const tools = [
         "image2": "https://img.lojadomecanico.com.br/IMAGENS/2/301/10314/1568119478468.JPG?ims=100x100/filters:quality(50)",
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/2/301/10314/1568119478878.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "19/08/2022",
-        "sold": "14",
+        "soldAmount": "14",
         "category": ""
 
     },
@@ -120,7 +120,7 @@ export const tools = [
         "image2": "https://images-americanas.b2w.io/produtos/7971776/imagens/alicate-tramontina-universal-8-isolado-1000-v-41001108/7971776_2_xlarge.jpg",
         "image3": "https://images-americanas.b2w.io/produtos/7971776/imagens/alicate-tramontina-universal-8-isolado-1000-v-41001108/7971776_4_xlarge.jpg",
         "entryDate": "19/08/2022",
-        "sold": "46"
+        "soldAmount": "46"
     },
     {
         "id": "12",
@@ -131,7 +131,7 @@ export const tools = [
         "image2": "https://m.media-amazon.com/images/I/417vsbKWH1S._AC_US40_.jpg",
         "image3": "https://m.media-amazon.com/images/I/418G8Jk-LfS._AC_US40_.jpg",
         "entryDate": "19/08/2022",
-        "sold": "35"
+        "soldAmount": "35"
     }
 ]
 

@@ -44,6 +44,7 @@ export default function Detail({route}){
     const[image1, setImage1] = useState(route.params?.image1)
     const[image2, setImage2] = useState(route.params?.image2)
     const[image3, setImage3] = useState(route.params?.image3)
+    const[soldAmount, setSoldAmount] = useState(route.params?.soldAmount)
 
     let installmentPrice
     let installmentPriceFloat
@@ -86,8 +87,7 @@ export default function Detail({route}){
     }
 
     function irFinish(){
-        navigation.navigate('finish', {cartBag: item, cep: route.params?.cep, place: route.params?.place, shipping: route.params?.shipping, 
-                                        txtShipping: true, date: route.params?.date, screen: 'detail', price: route.params?.price, dateSold: route.params?.dateSold})
+        navigation.navigate('finish', {cartBag: item, price: price, dateSold: route.params?.date})
     }
 
     function getDateCurrent(){
@@ -164,14 +164,15 @@ export default function Detail({route}){
         }
     }
 
-    function setDetail(id, name, price, description, image1, image2, image3){
+    function setDetail(id, name, price, description, image1, image2, image3, soldAmount){
         setId(id)
         setName(name)
         setPrice(price)
         setDescription(description)
         setImage1(image1)
         setImage2(image2)
-        setImage3(image3)        
+        setImage3(image3)
+        setSoldAmount(soldAmount)        
     }
     
     return(
@@ -219,7 +220,7 @@ export default function Detail({route}){
                         />
                         <Text style={styles.ratingStar}>{rating}.0</Text>
                         <View style={{backgroundColor: '#E1E1E1', width: 1, marginRight: 5, marginLeft: 5}}></View>
-                        <Text style={styles.amountSold}>10 pedidos</Text>
+                        <Text style={styles.amountSold}>{soldAmount} pedidos</Text>
                     </View>
                 </View>
 
@@ -294,7 +295,7 @@ export default function Detail({route}){
                                 cover= {item.image1}
                                 name= {item.name}
                                 price= {item.price}
-                                onPress={() =>  setDetail(item.id, item.name, item.price, item.description, item.image1, item.iamge2, item.image3)}
+                                onPress={() =>  setDetail(item.id, item.name, item.price, item.description, item.image1, item.iamge2, item.image3, item.soldAmount)}
                                 />
                             }
                             />

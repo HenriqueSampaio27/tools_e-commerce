@@ -107,7 +107,7 @@ export default function Home({route}){
                                 name= {item.name}
                                 price= {item.price}
                                 onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, date: dateSold})}
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, date: dateSold})}
                                 />
                             }
                             />
@@ -147,7 +147,7 @@ export default function Home({route}){
                                 name= {item.name}
                                 price= {item.price}
                                 onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, date: dateSold})}
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, date: dateSold})}
                                 />
                             }
                             />
@@ -170,9 +170,9 @@ export default function Home({route}){
                                     cover= {item.image1}
                                     name= {item.name}
                                     price= {item.price}
-                                    sold = {item.sold}
+                                    soldAmount = {item.soldAmount}
                                     onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                                image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, Sold: dateSold})}
+                                                                                image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, Sold: dateSold})}
                                     />
                                 }
                                 />

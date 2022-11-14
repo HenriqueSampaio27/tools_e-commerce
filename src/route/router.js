@@ -21,7 +21,7 @@ function Router(){
 
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="drawer">
+            <Stack.Navigator initialRouteName="address">
                 <Stack.Screen
                 name="transitionScreen"
                 component={TransitionScreen}
@@ -61,8 +61,7 @@ function Router(){
                 name= "address"
                 component={Address}
                 options={{
-                    title: "Endereço",
-                    headerTintColor: 'red'
+                    headerShown: false
                 }}
                 />
                 <Stack.Screen

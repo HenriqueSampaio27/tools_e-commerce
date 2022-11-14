@@ -15,7 +15,7 @@ export default function Product(props){
             
             <View style ={{width: '100%'}}>
                 <Text style={styles.price}>R$ {props.price}</Text>
-                <Text style={styles.sold}>{props.sold} vendidos</Text>
+                <Text style={styles.sold}>{props.soldAmount} vendidos</Text>
             </View>
         </TouchableOpacity>
         
