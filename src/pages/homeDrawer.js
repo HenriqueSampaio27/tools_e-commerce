@@ -107,7 +107,7 @@ export default function Home({route}){
                                 name= {item.name}
                                 price= {item.price}
                                 onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, date: dateSold})}
                                 />
                             }
                             />
@@ -127,7 +127,7 @@ export default function Home({route}){
                                 name= {item.name}
                                 price= {item.price}
                                 onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, date: dateSold})}
                                 />
                             }
                             />
@@ -147,7 +147,7 @@ export default function Home({route}){
                                 name= {item.name}
                                 price= {item.price}
                                 onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, Sold: dateSold})}
+                                                                            image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, date: dateSold})}
                                 />
                             }
                             />
@@ -172,7 +172,7 @@ export default function Home({route}){
                                     price= {item.price}
                                     sold = {item.sold}
                                     onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                                                                image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, dateSold: dateSold})}
+                                                                                image1: item.image1, image2: item.image2, image3: item.image3, sold: item.solddate, Sold: dateSold})}
                                     />
                                 }
                                 />
