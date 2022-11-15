@@ -75,7 +75,7 @@ function Router(){
                 name='search'
                 component={Search} 
                 options={{
-                    title: ""
+                    headerShown: false
                 }}      
                 />
                 <Stack.Screen

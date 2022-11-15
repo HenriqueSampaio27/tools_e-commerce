@@ -78,7 +78,7 @@ export default function Home({route}){
                             <IconZ name="cart" size={35} color="white"/>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.inputArea} onPress= {() => navigation.navigate('search', {dateNews: dateNews, dateInterest: dateInterest, dateWanted: dateWanted})}>
+                    <TouchableOpacity style={styles.inputArea} onPress= {() => navigation.navigate('search', {date: dateNews})}>
                         <Text style={styles.input}>O que está procurando...</Text>
                         <IconI name="search" size={25} color="black"/>
                     </TouchableOpacity>

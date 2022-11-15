@@ -1,39 +1,19 @@
 import react, { useEffect, useState } from 'react'
 import { Text, View, StyleSheet, TextInput, ScrollView, TouchableOpacity, Image} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { deleteDoc, doc, setDoc } from "firebase/firestore"
+import { doc, setDoc } from "firebase/firestore"
 import db from '../connection/firebaseConnection'
+import IconI from 'react-native-vector-icons/Ionicons'
 
 export default function Search({route}){
 
-    const[dateAux, setDateAux] = useState([])
-    const[date, setDate] = useState([])
-    const [wantedAux, setWantedAux] = useState([])
-
-    const navigation = useNavigation()
-
-    const[interest, setInterest] = useState(route.params?.dateInterest)
-    const[news, setNews] = useState(route.params?.dateNews)
-    const[wanted, setWanted] = useState(route.params?.dateWanted)
+    const[dateAux, setDateAux] = useState(route.params?.date)
+    const[date, setDate] = useState(route.params?.date)
     
-    function somaa(){
-        const newDate = [...news, ...interest]
-        setDate([...newDate])
-        setDateAux([...newDate]) 
-    }
+    const navigation = useNavigation()
     
     async function updateWanted(id, name, price, description, image1, image2, image3){
-        wanted.map((item) => {
-            wantedAux.push(item.id)
-        })
 
-        let valueId
-        let newWanted = wantedAux    
-        if(wantedAux.length >= 5){
-            valueId = wantedAux[0]
-            newWanted = newWanted.filter(i => i != valueId)
-            setWantedAux([...newWanted])
-        }
         
         const data = {
             name: name,
@@ -43,27 +23,14 @@ export default function Search({route}){
             image2: image2,
             image3: image3
         }
-        if(wanted.length == 5 && !wanted.includes(id)){
-            await deleteDoc(doc(db, "wanted", valueId))
-            await setDoc(doc(db, "wanted", id), data)
-            navigation.navigate('detail', {
-                name: name, price: price, description: description, 
-                image1: image1, image2: image2, image3: image3})
-        }else if(!wanted.includes(id)){          
-            await setDoc(doc(db, "wanted", id), data)
-            navigation.navigate('detail', {
-                name: name, price: price, description: description, 
-                image1: image1, image2: image2, image3: image3})
-        }else if(wanted.includes(id)){
-            navigation.navigate('detail', {
-                id: id, name: name, price: price, description: description, 
-                image1: image1, image2: image2, image3: image3})
-        }
+        
+        await setDoc(doc(db, "wanted", id), data)
+        
+        navigation.navigate('detail', {
+            id: id, name: name, price: price, description: description, 
+            image1: image1, image2: image2, image3: image3})
+        
     }
-    
-    useEffect(() => {
-        somaa()
-    }, [])
 
     function searchItem(text){
         if(text){
@@ -79,93 +46,98 @@ export default function Search({route}){
     }    
 
         return(
-            <ScrollView style={styles.container}>
-                <View style={styles.header}>
-                    <View style={styles.imputArea}>
+            <View>
+                <View style={styles.headerTitle}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <IconI name="chevron-back-circle" size={28} color="white"/>
+                    </TouchableOpacity>
+                    <View style={styles.inputArea}>
                         <TextInput 
                         placeholder="O que está procurando..."
-                        style={styles.imput}
+                        placeholderTextColor={"#808080"}
+                        style={styles.input}
                         onChange={(text) => searchItem(text.nativeEvent.text)}
                         />
-                        
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <IconI name="search" size={25} color="black"/>
+                        </TouchableOpacity>
                     </View>
-                </View>
-                <View style={styles.item}>
-                {
-
-                    date.map((item, index) => {
-                        return(
-                            <View key={index} >
-                                <TouchableOpacity style={styles.itemView} onPress={() => updateWanted(item.id, item.name, item.price, 
-                                item.description, item.image1, item.image2, item.image3)}>
-                                    <Image
-                                    source={{uri: item.image1}}
-                                    style={styles.image}
-                                    resizeMode={"contain"}
-                                    />
-                                    <View style = {styles.viewText}>
-                                        <Text style={styles.nameItem} numberOfLines={1} ellipsizeMode={'tail'}>{item.name}</Text>
-                                    </View>
-                                </TouchableOpacity>
-                            </View>
-                        )
-                    })
-                }
-                </View>
-            </ScrollView>
+                </View> 
+                <ScrollView style={{backgroundColor: 'white', height: "92%", width: '100%'}}>
+                    <View style={styles.item}>
+                        {
+                            date.map((item, index) => {
+                                return(
+                                    <TouchableOpacity style={styles.itemView} onPress={() => updateWanted(item.id, item.name, item.price, 
+                                    item.description, item.image1, item.image2, item.image3)} key={index}>
+                                        <Image
+                                        source={{uri: item.image1}}
+                                        style={styles.image}
+                                        resizeMode={"contain"}
+                                        />
+                                        <View style = {styles.viewText}>
+                                            <Text style={styles.nameItem} numberOfLines={1} ellipsizeMode={'tail'}>{item.name}</Text>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })
+                        }
+                    </View>
+                </ScrollView>
+            </View>
         )
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-        backgroundColor: '#d7d7d7'   
-    },
-    header:{
-        paddingHorizontal: 15,
-        backgroundColor: "#D7D7D7",
+    headerTitle:{
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%', 
-        marginVertical: 20
+        width: '100%',
+        height: "8%",
+        backgroundColor: '#2799F3'
     },
-    imputArea:{
-        paddingHorizontal: 15,
+    inputArea:{
         flexDirection: 'row',
         alignItems: 'center',
-        width: '99%',
+        width: '80%',
         backgroundColor: 'white',
         height: 40,
-        borderRadius: 20
+        borderRadius: 20,
+        marginLeft: 10
     },
-    imput:{
-        padding: 2,
+    input:{
         backgroundColor: "white",
+        color: 'black',
+        fontFamily: 'Montserrat-Medium',
         fontSize: 14,
         borderRadius: 20,
         width: '90%',
-        marginTop: 10,
-        marginBottom: 10
+    },
+    item:{
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'center',
+        marginBottom: 50,
+        marginTop: 15
     },
     itemView:{
         paddingLeft: 15,
         marginBottom: 10,
         flexDirection: 'row',
-        width: '85%' 
+        width: '90%',
+        borderColor: '#E1E1E1',
+        borderWidth: 1,
+        borderRadius: 20
     },
     nameItem:{
         backgroundColor: 'white',
-        width: '100%',
+        color: "black",
+        fontFamily: 'Montserrat-Medium',
         height: 50,
         fontSize: 17,
-        borderTopRightRadius: 15,
-        borderBottomRightRadius: 15,
         paddingLeft: 15,
         paddingTop: 12
-    },
-    viewText:{
-        width: '100%'
     },
     image:{
         height: 50,
