@@ -21,7 +21,7 @@ function Router(){
 
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="address">
+            <Stack.Navigator initialRouteName="drawer">
                 <Stack.Screen
                 name="transitionScreen"
                 component={TransitionScreen}
@@ -68,8 +68,7 @@ function Router(){
                 name='cart'
                 component={Cart} 
                 options={{
-                    title: "Carrinho",
-                    headerTintColor: 'red'
+                    headerShown: false
                 }}               
                 />
                 <Stack.Screen
