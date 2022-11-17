@@ -52,7 +52,7 @@ export default function Detail({route}){
     function passCart(){
         let verification = true
         bag.map((item) => {
-            if(item.id != route.params?.id){
+            if(item.id != id){
                 verification = true
             }else{
                 verification = false
@@ -87,7 +87,7 @@ export default function Detail({route}){
     }
 
     function irFinish(){
-        navigation.navigate('finish', {cartBag: item, price: price, dateSold: route.params?.date})
+        navigation.navigate('info_pay', {cartBag: item, price: price, dateSold: route.params?.date, screen: "detail"})
     }
 
     function getDateCurrent(){

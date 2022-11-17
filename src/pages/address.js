@@ -2,6 +2,7 @@ import React, {useState ,useEffect} from "react"
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ScrollView} from 'react-native'
 import { useNavigation } from "@react-navigation/native"
 import IconI from 'react-native-vector-icons/Ionicons'
+import Finish from "./info_pay"
 
 export default function Address({route}){
     const[state, setState] = useState(false)
@@ -70,12 +71,19 @@ export default function Address({route}){
         setNumber('')
         setShipping(0)
     }
-    const screen = route.params?.screen
+    
     function passAddress(){
-        if(cep != ''){
-        navigation.navigate(screen, {cep: cep, place: logradouro, shipping: shipping, date: date, txtShipping: true, 
-                            image1: route.params?.image1, image2: route.params?.image2, image3: route.params?.image3, 
-                            name:route.params?.name, price:route.params?.price, description:route.params?.description, screen: 'address', dateSold: route.params?.dateSold})
+        if(cep.length == 8){
+            if(number != ''){
+                navigation.navigate("info_pay", {cep: cep, place: logradouro, bairro: bairro, localidade: localidade, uf: uf, number: number, shipping: shipping, date: date, 
+                    image1: route.params?.image1, image2: route.params?.image2, image3: route.params?.image3, 
+                    name:route.params?.name, price:route.params?.price, description:route.params?.description, cartBag: route.params?.cartBag, screen: 'address'})
+            }else{
+                Alert.alert(
+                    'Campo N° obrigatório!',
+                    'Digite o número do endereço'
+                )    
+            }
         }else{
             Alert.alert(
                 'Nenhum endereço buscado!',

@@ -19,7 +19,7 @@ export default function Cart({route}){
 
     function irFinish(){
         if(cartBag.length != 0){
-            navigation.navigate('finish', {cartBag: cartBag})
+            navigation.navigate('info_pay', {cartBag: cartBag, screen: 'cart'})
         }else{
             Alert.alert(
                 "O carrinho está vazio!",
@@ -41,87 +41,89 @@ export default function Cart({route}){
                 </TouchableOpacity>
                 <Text style={styles.title}>Carrinho</Text>
             </View>
-            <View style={{backgroundColor: '#2799F3', height: "78%"}}>
-                <ScrollView style={{backgroundColor: 'white', height: "100%", borderTopLeftRadius: 50, borderTopRightRadius: 50, paddingTop: 50}}>
-                    {
-                        cartBag.map((item, index) => {
-                            const [amount,setAmount] = useState(1)
-                            function sum(){
-                                if(amount < 20){
-                                    const sum = amount + 1
-                                    setAmount(sum)
-                                    increment(item.price)
+            <View style={{backgroundColor: '#2799F3', height: "78%" }}>
+                <ScrollView style={{backgroundColor: 'white', borderTopLeftRadius: 50, borderTopRightRadius: 50}}>
+                    <View style={{backgroundColor: 'white', height: "100%", paddingTop: 50, alignItems: 'center', justifyContent: 'center', borderTopLeftRadius: 50, borderTopRightRadius: 50}}>
+                        {
+                            cartBag.map((item, index) => {
+                                const [amount,setAmount] = useState(1)
+                                function sum(){
+                                    if(amount < 20){
+                                        const sum = amount + 1
+                                        setAmount(sum)
+                                        increment(item.price)
+                                    }
                                 }
-                            }
-                            function strip(){
-                                if(amount > 1){
-                                    const strip = amount - 1
-                                    setAmount(strip)
-                                    decrement(item.price)
+                                function strip(){
+                                    if(amount > 1){
+                                        const strip = amount - 1
+                                        setAmount(strip)
+                                        decrement(item.price)
+                                    }
                                 }
-                            }
-                            function removeItem(){
-                                Alert.alert(
-                                    "Deseja remover este item do carrinho?",
-                                    " ",
-                                    [
-                                        {
-                                            text: 'Cancelar',
-                                            onPress: () => {}
-                                        
-                                        },
-                                        {
-                                            text: 'Sim',
-                                            onPress: () => {remove(item.id, amount, item.price), Alert.alert(
-                                                "Item removido com sucesso",
-                                                "",
-                                                [
-                                                    {
-                                                        text: 'OK',
-                                                        onPress: () => navigation.navigate("homeDrawer")
-                                                    }
-                                                ]
-                                                )}
-                                        }
-                                    ]
-                                )
+                                function removeItem(){
+                                    Alert.alert(
+                                        "Deseja remover este item do carrinho?",
+                                        " ",
+                                        [
+                                            {
+                                                text: 'Cancelar',
+                                                onPress: () => {}
+                                            
+                                            },
+                                            {
+                                                text: 'Sim',
+                                                onPress: () => {remove(item.id, amount, item.price), Alert.alert(
+                                                    "Item removido com sucesso",
+                                                    "",
+                                                    [
+                                                        {
+                                                            text: 'OK',
+                                                            onPress: () => navigation.navigate("homeDrawer")
+                                                        }
+                                                    ]
+                                                    )}
+                                            }
+                                        ]
+                                    )
 
-                            }
-                            return (
-                                <View style={{flexDirection: 'row',borderColor: "#E1E1E1", borderTopWidth: 1, borderBottomWidth: 1}} key={index}>
-                                    <View style={styles.header} >
-                                        <Image
-                                            source={{uri: item.image1}}
-                                            style={styles.image}
-                                            resizeMode='contain'
-                                        />
-                                    <View>
-                                        <View style={{width: 200}}>
-                                            <Text style={styles.name} numberOfLines={2} ellipsizeMode={'tail'}>{item.name}</Text>
-                                            <Text style={styles.priceBag}>R$ {item.price}</Text>
-                                        </View>
-                                        <View style={styles.footer}>
-                                            <TouchableOpacity style={styles.button} onPress={()=> strip()}>
-                                                <Text style={styles.pressButton}>-</Text>
-                                            </TouchableOpacity>
-                                            <View style={styles.amountTxt}>
-                                                <Text 
-                                                style={styles.text}  
-                                                >{amount}</Text>
+                                }
+                                return (
+                                    <View style={{flexDirection: 'row',borderColor: "#E1E1E1", borderTopWidth: 1, borderBottomWidth: 1}} key={index}>
+                                        <View style={styles.header} >
+                                            <Image
+                                                source={{uri: item.image1}}
+                                                style={styles.image}
+                                                resizeMode='contain'
+                                            />
+                                            <View>
+                                                <View style={{width: 200}}>
+                                                    <Text style={styles.name} numberOfLines={2} ellipsizeMode={'tail'}>{item.name}</Text>
+                                                    <Text style={styles.priceBag}>R$ {item.price}</Text>
+                                                </View>
+                                                <View style={styles.footer}>
+                                                    <TouchableOpacity style={styles.button} onPress={()=> strip()}>
+                                                        <Text style={styles.pressButton}>-</Text>
+                                                    </TouchableOpacity>
+                                                    <View style={styles.amountTxt}>
+                                                        <Text 
+                                                        style={styles.text}  
+                                                        >{amount}</Text>
+                                                    </View>
+                                                    <TouchableOpacity style={styles.button} onPress={() => sum()}>
+                                                        <Text style={styles.pressButton}>+</Text>
+                                                    </TouchableOpacity>
+                                                </View>
                                             </View>
-                                            <TouchableOpacity style={styles.button} onPress={() => sum()}>
-                                                <Text style={styles.pressButton}>+</Text>
-                                            </TouchableOpacity>
-                                            </View>
                                         </View>
+                                        <TouchableOpacity style={styles.remove} onPress={() => removeItem()}>
+                                            <IconM name="delete" size={30} color="red"/>
+                                        </TouchableOpacity>
                                     </View>
-                                    <TouchableOpacity style={styles.remove} onPress={() => removeItem()}>
-                                        <IconM name="delete" size={30} color="red"/>
-                                    </TouchableOpacity>
-                                </View>
-                            )
-                        })
-                    }    
+                                )
+                            })
+                        }   
+                    </View> 
                 </ScrollView>
             </View>
             <View style={{flexDirection:'row', width: '100%', height: '10%'}}>
@@ -188,10 +190,9 @@ const styles = StyleSheet.create({
         width: 20,
         height: 20,
         backgroundColor: 'white',
-        elevation: 2,
         alignItems: 'center',
-        borderColor: 'black'
-        
+        borderColor: '#A8A2A2',
+        borderWidth: 0.7
     },
     pressButton:{
         fontSize:15,
@@ -201,15 +202,17 @@ const styles = StyleSheet.create({
     text:{
         fontSize:15,
         color: "black",
-        fontFamily: 'Montserrat-Medium'
+        fontFamily: 'Montserrat-Regular'
     },
     amountTxt:{
         width: 30,
         height: 20,
         backgroundColor: 'white',
-        elevation: 2,
         alignItems: 'center',
-        borderColor: 'black'  
+        borderColor: 'black',
+        borderColor: '#A8A2A2',
+        borderTopWidth: 0.7,
+        borderBottomWidth: 0.7
     },
     viewPrice:{
         backgroundColor: 'white',

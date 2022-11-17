@@ -7,7 +7,7 @@ import HomeDrawer from '../pages/homeDrawer'
 import CustomDrawerComp from "../componets/CustomDrawerComp"
 import Detail from '../pages/detail'
 import Cart from "../pages/cart"
-import Finish from "../pages/finish"
+import Finish from "../pages/info_pay"
 import Address from "../pages/address"
 import Search from "../pages/search"
 import Login from "../pages/login"

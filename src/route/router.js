@@ -5,7 +5,7 @@ import {createDrawerNavigator} from "@react-navigation/drawer"
 import Home from '../pages/homeDrawer'
 import Detail from '../pages/detail'
 import Cart from "../pages/cart"
-import Finish from "../pages/finish"
+import Info_pay from "../pages/info_pay"
 import Address from "../pages/address"
 import Search from "../pages/search"
 import Login from "../pages/login"
@@ -79,11 +79,10 @@ function Router(){
                 }}      
                 />
                 <Stack.Screen
-                name='finish'
-                component={Finish}
+                name='info_pay'
+                component={Info_pay}
                 options={{
-                    title: "Finalizar",
-                    headerTintColor: 'red'
+                    headerShown: false
                 }}
                 />
                 <Stack.Screen

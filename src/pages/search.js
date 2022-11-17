@@ -14,7 +14,6 @@ export default function Search({route}){
     
     async function updateWanted(id, name, price, description, image1, image2, image3){
 
-        
         const data = {
             name: name,
             price: price,
@@ -24,7 +23,7 @@ export default function Search({route}){
             image3: image3
         }
         
-        await setDoc(doc(db, "wanted", id), data)
+        //await setDoc(doc(db, "wanted", id), data)
         
         navigation.navigate('detail', {
             id: id, name: name, price: price, description: description, 
