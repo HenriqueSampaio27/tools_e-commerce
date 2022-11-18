@@ -7,6 +7,7 @@ import Detail from '../pages/detail'
 import Cart from "../pages/cart"
 import Info_pay from "../pages/info_pay"
 import Payment from "../pages/payment"
+import Success_Payment from "../pages/success_payment"
 import Address from "../pages/address"
 import Search from "../pages/search"
 import Login from "../pages/login"
@@ -22,7 +23,7 @@ function Router(){
 
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="payment">
+            <Stack.Navigator initialRouteName="drawer">
                 <Stack.Screen
                 name="transitionScreen"
                 component={TransitionScreen}
@@ -89,6 +90,13 @@ function Router(){
                 <Stack.Screen
                 name="payment"
                 component={Payment}
+                options={{
+                    headerShown: false
+                }}
+                />
+                <Stack.Screen
+                name="success_payment"
+                component={Success_Payment}
                 options={{
                     headerShown: false
                 }}

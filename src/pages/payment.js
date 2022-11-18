@@ -64,6 +64,20 @@ export default function Payment({route}){
     }
     stylesCheckBox()
 
+    let flagCredit
+    function flag(){
+        if(card[0] == "4"){
+            flagCredit = `${require("../assets/image/credit_visa.png")}`
+        }else if(card[0] == "6"){
+            flagCredit = `${require("../assets/image/credit_elo.png")}`
+        }else if(card[0] == "2" || card[0] == "5"){
+            flagCredit = `${require("../assets/image/credit_mastercard.png")}`
+        }else{
+            flagCredit = `${require("../assets/image/credit_hipercard.png")}`
+        }
+    }
+    flag()
+
     function payment(){
         if(options != ""){
             if(options == "credit"){
@@ -82,7 +96,7 @@ export default function Payment({route}){
                                 },
                                 {
                                     text: "Sim",
-                                    onPress: () => navigation.navigate()
+                                    onPress: () => navigation.navigate("success_payment", {options: options})
                                 }
                             ]
         
@@ -110,7 +124,7 @@ export default function Payment({route}){
                         },
                         {
                             text: "Sim",
-                            onPress: () => navigation.navigate()
+                            onPress: () => navigation.navigate("success_payment", {options: options})
                         }
                     ]
 
@@ -123,7 +137,7 @@ export default function Payment({route}){
             )
         }
     }
-    console.log(options)
+    
     return(
         <View>
             <View style={styles.conteiner}>
@@ -180,7 +194,7 @@ export default function Payment({route}){
                                     onChangeText={(text) => setCard(text)}
                                     value={card}
                                     ></TextInputMask>
-                                    <Image source={require("../assets/image/credit_elo.png")}
+                                    <Image source={flagCredit}
                                     style={{width: 40, height: 22, marginTop: 8, marginLeft: 25}}
                                     />
                                 </View>

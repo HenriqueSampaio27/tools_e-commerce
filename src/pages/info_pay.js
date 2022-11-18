@@ -51,7 +51,15 @@ export default function Info_pay({route}){
     }, [route])
 
     function payment(){
-        navigation.navigate("payment")
+        if(addressInfo){
+            navigation.navigate("payment")
+        }else{
+            Alert.alert(
+                "",
+                "Informe o endereço de entrega"
+            )
+        }
+        
     }
 
     function updateSold(bag){
@@ -152,7 +160,7 @@ export default function Info_pay({route}){
                             <TouchableOpacity style={styles.addressButton} onPress={() => irAddress()}>
                                 {addressInfo? <Text style={styles.addressInfo}>{addressDelivery}</Text>:
                                     <View style={{flexDirection: 'row'}}>
-                                        <Text style={styles.addressInfo}>Informe seu endereço</Text>
+                                        <Text style={styles.addressInfo}>Informe o endereço de entrega</Text>
                                         <IconI name="information-circle" size={20} color="#EEAD2D"/>
                                     </View>}
                             </TouchableOpacity>: null}
@@ -228,7 +236,7 @@ export default function Info_pay({route}){
                                     <Text style={styles.fast}>Receba em casa</Text>
                                 </View>
                                 <TouchableOpacity style={styles.addressButton} onPress={() => irAddress()}>
-                                    <Text style={styles.addressInfo}>Informe seu endereço</Text>
+                                    <Text style={styles.addressInfo}>Informe o endereço de entrega</Text>
                                     <IconI name="information-circle" size={20} color="#EEAD2D"/>
                                 </TouchableOpacity>
                             </View>
