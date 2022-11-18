@@ -30,6 +30,7 @@ export default function ForgotPassword(){
                             keyboardType="email-address"
                             onChangeText={(text) => setEmail(text)}
                             value={email}
+                            autoCapitalize={"none"}
                             ></TextInput>
                         </View>
                         

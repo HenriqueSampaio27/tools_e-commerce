@@ -6,6 +6,7 @@ import Home from '../pages/homeDrawer'
 import Detail from '../pages/detail'
 import Cart from "../pages/cart"
 import Info_pay from "../pages/info_pay"
+import Payment from "../pages/payment"
 import Address from "../pages/address"
 import Search from "../pages/search"
 import Login from "../pages/login"
@@ -21,7 +22,7 @@ function Router(){
 
     return(
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="drawer">
+            <Stack.Navigator initialRouteName="payment">
                 <Stack.Screen
                 name="transitionScreen"
                 component={TransitionScreen}
@@ -81,6 +82,13 @@ function Router(){
                 <Stack.Screen
                 name='info_pay'
                 component={Info_pay}
+                options={{
+                    headerShown: false
+                }}
+                />
+                <Stack.Screen
+                name="payment"
+                component={Payment}
                 options={{
                     headerShown: false
                 }}

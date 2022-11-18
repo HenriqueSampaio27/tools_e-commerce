@@ -51,7 +51,7 @@ export default function Info_pay({route}){
     }, [route])
 
     function payment(){
-        navigation.navigate()
+        navigation.navigate("payment")
     }
 
     function updateSold(bag){

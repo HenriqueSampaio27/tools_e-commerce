@@ -106,6 +106,7 @@ export default function Login(){
                             keyboardType="email-address"
                             onChangeText={(text) => setEmail(text)}
                             value={email}
+                            autoCapitalize={"none"}
                             ></TextInput>
                         </View>
                         <View style={styles.headerInput}>
@@ -118,6 +119,7 @@ export default function Login(){
                             secureTextEntry= {hidePass}
                             onChangeText={(text) => setPassword(text)}
                             value={password}
+                            autoCapitalize={"none"}
                             ></TextInput>
                             <TouchableOpacity style={styles.icon} onPress={() => setHidePass(!hidePass)}>
                                 {hidePass? <IconE name="eye" size={20} color="#898787"/>:
