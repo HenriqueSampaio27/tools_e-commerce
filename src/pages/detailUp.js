@@ -23,7 +23,7 @@ import IconMC from "react-native-vector-icons/MaterialCommunityIcons"
 import Stars from 'react-native-stars'
 import New from '../componets/New'
 
-export default function Detail({route}){
+export default function DetailUp({route}){
     const[txtShipping, setTxtShipping] = useState(false)
     const[favoriteIcon, setFavoriteIcon] = useState(false)
     const[descriptionText, setDescriptionText] = useState(false)
@@ -295,7 +295,7 @@ export default function Detail({route}){
                                 cover= {item.image1}
                                 name= {item.name}
                                 price= {item.price}
-                                onPress={() =>  navigation.navigate("detailUp",{id: item.id, name: item.name, price: item.price, description: item.description,
+                                onPress={() =>  navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
                                     image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, date: route.params?.date})}
                                 />
                             }

@@ -4,6 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {createDrawerNavigator} from "@react-navigation/drawer"
 import Home from '../pages/homeDrawer'
 import Detail from '../pages/detail'
+import DetailUp from "../pages/detailUp"
 import Cart from "../pages/cart"
 import Info_pay from "../pages/info_pay"
 import Payment from "../pages/payment"
@@ -56,6 +57,13 @@ function Router(){
                 name= "detail" 
                 component={Detail}
                 options= {{
+                    headerShown: false
+                }}
+                />
+                <Stack.Screen
+                name="detailUp"
+                component={DetailUp}
+                options={{
                     headerShown: false
                 }}
                 />
