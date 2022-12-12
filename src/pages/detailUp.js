@@ -72,6 +72,9 @@ export default function DetailUp({route}){
         
     }
 
+    useEffect(() => {setDetail(route.params.id, route.params.name, route.params.price, route.params.description,
+        route.params.image1, route.params.image2, route.params.image3)}, [route])
+        
     function split(){
         let price2 = parseInt(route.params?.price)
         installmentPrice = price2/6

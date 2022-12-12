@@ -174,6 +174,9 @@ export default function Detail({route}){
         setImage3(image3)
         setSoldAmount(soldAmount)        
     }
+
+    useEffect(() => {setDetail(route.params.id, route.params.name, route.params.price, route.params.description,
+        route.params.image1, route.params.image2, route.params.image3)}, [route])
     
     return(
         <View>
