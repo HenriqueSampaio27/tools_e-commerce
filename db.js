@@ -9,7 +9,8 @@ export const tools = [
         "image3": "https://m.media-amazon.com/images/I/41bvHtjmFXL._AC_SX522_.jpg",
         "entryDate": "19/08/2022",
         "soldAmount": "10",
-        "wantedAmount": "20"
+        "wantedAmount": "20",
+        "category": "Eletricos"
     },
     {
         "id": "2",
@@ -21,7 +22,8 @@ export const tools = [
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0143.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "19/09/2022",
         "soldAmount": "16",
-        "wantedAmount": "35"
+        "wantedAmount": "35",
+        "category": "Eletricos"
     },
     {
         "id": "3",
@@ -33,7 +35,8 @@ export const tools = [
         "image3": "https://http2.mlstatic.com/D_Q_NP_889061-MLA48828576030_012022-R.webp",
         "entryDate": "20/08/2022",
         "soldAmount": "45",
-        "wantedAmount": "82"
+        "wantedAmount": "82",
+        "category": "Chaves"
     },
     {
         "id": "4",
@@ -45,7 +48,8 @@ export const tools = [
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/2/206/12677/Jogo-de-Chaves-Combinadas-em-Milimetros--belzer-302402b3.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "19/08/2022",
         "soldAmount": "22",
-        "wantedAmount": "12"
+        "wantedAmount": "12",
+        "category": "Chaves"
     },
     {
         "id": "5",
@@ -57,7 +61,8 @@ export const tools = [
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/2/688/18856/Chave-Torx-com-7-Pecas-T10-a-T40-vonder-35730100404.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "02/09/2022",
         "soldAmount": "10",
-        "wantedAmount": "20"
+        "wantedAmount": "20",
+        "category": "Chaves"
     },
     {
         "id": "6",
@@ -69,7 +74,8 @@ export const tools = [
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/19/189/76541/Chave-de-Teste-com-Ponta-Fenda-18-x-3-Po-tramontina-419001104.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "30/08/2022",
         "soldAmount": "19",
-        "wantedAmount": "25"
+        "wantedAmount": "25",
+        "category": "Chaves"
     },
     {
         "id": "7",
@@ -81,7 +87,8 @@ export const tools = [
         "image3": "https://img.lojadomecanico.com.br/IMAGENS/21/230/4106/Martelete-Combinado-800W-220V-com-Maleta-makita-hr24704.JPG?ims=100x100/filters:quality(50)",
         "entryDate": "15/08/2022",
         "soldAmount": "8",
-        "wantedAmount": "10"
+        "wantedAmount": "10",
+        "category": "Eletricos"
     },
     {
         "id": "8",
@@ -93,7 +100,8 @@ export const tools = [
         "image3": "https://a-static.mlcdn.com.br/96x74/martelete-rompedor-demolidor-furadeira-25j-sds-plus-1350w-com-maleta-gt963-lorben/focalouca/gt963-1/c9701b8872a3a33c36611ee198d85f87.jpeg",
         "entryDate": "25/09/2022",
         "soldAmount": "6",
-        "wantedAmount": "28"
+        "wantedAmount": "28",
+        "category": "Eletricos"
     },
     {
         "id": "9",
@@ -105,7 +113,8 @@ export const tools = [
         "image3": "https://a-static.mlcdn.com.br/800x560/serra-marmore-makita-1300w-4100nh3-zx2/takilocferram/9e5f381417dd11ecaf254201ac185013/391c1f8f86eb101a9cc80734831cb85a.jpeg",
         "entryDate": "10/08/2022",
         "soldAmount": "25",
-        "wantedAmount": "21"
+        "wantedAmount": "21",
+        "category": "Eletricos"
     },
     {
         "id": "10",
@@ -118,7 +127,7 @@ export const tools = [
         "entryDate": "19/08/2022",
         "soldAmount": "14",
         "wantedAmount": "20",
-        "category": ""
+        "category": "Chaves"
 
     },
     {
@@ -131,7 +140,8 @@ export const tools = [
         "image3": "https://images-americanas.b2w.io/produtos/7971776/imagens/alicate-tramontina-universal-8-isolado-1000-v-41001108/7971776_4_xlarge.jpg",
         "entryDate": "19/08/2022",
         "soldAmount": "46",
-        "wantedAmount": "40"
+        "wantedAmount": "40",
+        "category": "Chaves"
     },
     {
         "id": "12",
@@ -143,7 +153,8 @@ export const tools = [
         "image3": "https://m.media-amazon.com/images/I/418G8Jk-LfS._AC_US40_.jpg",
         "entryDate": "19/08/2022",
         "soldAmount": "35",
-        "wantedAmount": "29"
+        "wantedAmount": "29",
+        "category": "Eletrônicos"
     }
 ]
 

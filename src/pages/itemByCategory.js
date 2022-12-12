@@ -4,9 +4,9 @@ import {View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList} f
 import IconI from 'react-native-vector-icons/Ionicons'
 import { tools } from "../../db";
 
-export default function CategoryDrawer(){
+export default function ItemByCategory({route}){
     
-    const[categoryItem, setCategoryItem] = useState(tools)
+    const[category, setCategory] = useState(tools)
     const navigation = useNavigation()
     
     return(
@@ -15,26 +15,14 @@ export default function CategoryDrawer(){
                 <TouchableOpacity onPress={() => navigation.goBack()}>
                     <IconI name="chevron-back-circle" size={28} color="white"/>
                 </TouchableOpacity>
-                <Text style={styles.title}>Categorias</Text>
+                <Text style={styles.title}>{route.params.category}</Text>
             </View>
             <View style={{backgroundColor: '#2799F3', height: "88%" }}>
-                
-                    <View style={{backgroundColor: 'white', height: "100%", paddingTop: 30, alignItems: 'center', justifyContent: 'center', borderTopLeftRadius: 50, borderTopRightRadius: 50}}>
-                        <FlatList 
-                            vertical
-                            data={categoryItem}
-                            numColumns={2}
-                            keyExtractor={item => item.id}
-                            renderItem={({item, index}) => 
-                                {return(
-                                    <TouchableOpacity style={styles.itens} key={index} onPress={() => {navigation.navigate("itemByCategory",{category: item.category})}}>
-                                    <Text style={styles.name} numberOfLines={2} ellipsizeMode={'tail'}>{item.category}</Text>
-                                    </TouchableOpacity>
-                                )}
-                            }
-                            />
+                <ScrollView style={{backgroundColor: 'white', borderTopLeftRadius: 50, borderTopRightRadius: 50}} showsVerticalScrollIndicator={false}>
+                    <View style={{backgroundColor: 'white', height: "100%", paddingTop: 50, paddingBottom: 50, alignItems: 'center', justifyContent: 'center', borderTopLeftRadius: 50, borderTopRightRadius: 50}}>
+                        
                     </View>
-                
+                </ScrollView>
             </View>
         </View>
     )
