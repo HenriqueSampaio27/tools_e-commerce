@@ -17,6 +17,7 @@ import TransitionScreen from "../pages/transitionScreen"
 import RecoverPassword from "../pages/recoverPassword"
 import DrawerRoutes from "./drawerRouter"
 import ItemByCategory from "../pages/itemByCategory"
+import OrderDetail from "../pages/orderDetail"
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator()
@@ -120,6 +121,13 @@ function Router(){
                 <Stack.Screen
                 name="itemByCategory" 
                 component={ItemByCategory} 
+                options={{
+                    headerShown: false
+                }}
+                />
+                <Stack.Screen
+                name="orderDetail" 
+                component={OrderDetail} 
                 options={{
                     headerShown: false
                 }}

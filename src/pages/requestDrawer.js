@@ -10,23 +10,6 @@ export default function RequestDrawer(){
     const[date, setDate] = useState(tools)
     const navigation = useNavigation()
     
-    /* 
-    {
-                            date.map((item, index) => {
-                                return(
-                                    <OrderItem
-                                    cover={item.image1}
-                                    name={item.name}
-                                    price={item.price}
-                                    amount={item.soldAmount}
-                                    chave={index}
-                                    onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                        image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, Sold: date})}
-                                    />
-                                )
-                            })
-                        }
-    */
     return(
         <View>
             <View style={styles.headerTitle}>
@@ -48,8 +31,8 @@ export default function RequestDrawer(){
                                     name={item.name}
                                     price={item.price}
                                     amount={item.soldAmount}
-                                    onPress={() => navigation.navigate("detail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                        image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, Sold: date})}
+                                    onPress={() => navigation.navigate("orderDetail",{id: item.id, name: item.name, price: item.price, description: item.description,
+                                        image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount})}
                                     /> 
                                 )}
                             }

@@ -12,7 +12,7 @@ export default function OrderItem(props){
     return(
         <TouchableOpacity onPress={props.onPress} style={styles.container}>
             <Text style={styles.info}>Pedido a caminho</Text>
-            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 2, marginBottom: 5}}></View>
+            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 1, marginBottom: 5}}></View>
             
             <View style={{flexDirection: 'row', width: '90%'}}>
                 <Image style={styles.cover}
@@ -28,12 +28,12 @@ export default function OrderItem(props){
                 </View>
             </View>
             
-            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 2, marginTop: 2}}></View>
+            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 1, marginTop: 2, marginBottom: 2}}></View>
             <View style={styles.footer}>
                 <Text style={styles.amount}>2 itens</Text>
                 <Text style={styles.total}>Total R$ 2000,00</Text>
             </View>
-            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 2, marginTop: 2}}></View>
+            <View style={{backgroundColor: '#E1E1E1', width: "90%", height: 1, marginTop: 4}}></View>
             <View style={styles.footer}>
                 <Text style={styles.detail}>Detalhes do pedido</Text>
                 <IconM name="navigate-next" color={'#2799F3'} size={24}/>
