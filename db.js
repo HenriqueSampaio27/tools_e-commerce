@@ -210,6 +210,35 @@ export const tools2 = [
         "entryDate": "02/09/2022"
     }
 ]
+
+export const tools3 = [
+    {
+        "id": "1",
+        "name": "Furadeira de Impacto BOSCH",
+        "price": "350,00",
+        "description": "Furadeira de impacto com mandril 1/2 que oferece maior capacidade de trabalho e melhor retenção da broca. Possui aberturas de ventilação de ar que ajudam na refrigeração do motor para uma longa vida útil. Botão de uso contínuo que permite manter a unidade em uma velocidade contínua. Com potente motor 100% apoiado em rolamentos de esferas.",
+        "image1": "https://m.media-amazon.com/images/I/51-6YMcxPHL._AC_SX522_.jpg",
+        "image2": "https://m.media-amazon.com/images/I/41opfiDEyML._AC_SX522_.jpg",
+        "image3": "https://m.media-amazon.com/images/I/41bvHtjmFXL._AC_SX522_.jpg",
+        "entryDate": "19/08/2022",
+        "soldAmount": "10",
+        "wantedAmount": "20",
+        "category": "Eletricos"
+    },
+    {
+        "id": "2",
+        "name": "Furadeira sem Impacto",
+        "price": "278,00",
+        "description": "Potente motor de 550 W, o que coloca como a mais forte de sua categoria. Desenho compacto e excelente ergonomia, proporcionando conforto e mobilidade para o usuário e Leve",
+        "image1": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0141.JPG",
+        "image2": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0142.JPG?ims=100x100/filters:quality(50)",
+        "image3": "https://img.lojadomecanico.com.br/IMAGENS/21/221/12624/Furadeira-sem-Impacto-38-Pol-com-Velocid-dewalt-dwd0143.JPG?ims=100x100/filters:quality(50)",
+        "entryDate": "19/09/2022",
+        "soldAmount": "16",
+        "wantedAmount": "35",
+        "category": "Eletricos"
+    }
+]
 /*async function readNews(){
         const news = []
         const querySnapshot = await getDocs(collection(db, "news"));

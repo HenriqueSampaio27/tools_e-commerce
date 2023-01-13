@@ -2,12 +2,13 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList} from "react-native"
 import IconI from 'react-native-vector-icons/Ionicons'
-import { tools } from "../../db";
+import { tools, tools3 } from "../../db";
 import OrderItem from "../componets/OrderItem";
 
 export default function RequestDrawer(){
     
     const[date, setDate] = useState(tools)
+    const[date2, setDate2] = useState(tools3)
     const navigation = useNavigation()
     
     return(
@@ -32,7 +33,7 @@ export default function RequestDrawer(){
                                     price={item.price}
                                     amount={item.soldAmount}
                                     onPress={() => navigation.navigate("orderDetail",{id: item.id, name: item.name, price: item.price, description: item.description,
-                                        image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount})}
+                                        image1: item.image1, image2: item.image2, image3: item.image3, soldAmount: item.soldAmount, date: date2})}
                                     /> 
                                 )}
                             }

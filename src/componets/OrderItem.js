@@ -47,7 +47,7 @@ export default function OrderItem(props){
 const styles = StyleSheet.create({
     container:{
         backgroundColor: "#ffff",
-        marginBottom: 8,
+        marginBottom: 15,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,

@@ -2,18 +2,21 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import {View, Text, StyleSheet, TouchableOpacity, ScrollView, Image, FlatList} from "react-native"
 import IconI from 'react-native-vector-icons/Ionicons'
-import { tools } from "../../db";
 import MapProgress from "../componets/MapProggress";
-import OrderItem from "../componets/OrderItem";
+import IconF from "react-native-vector-icons/Foundation"
 
 export default function OrderDetail({route}){
     
-    const[date, setDate] = useState(tools)
     const navigation = useNavigation()
+    const[date2, setDate2] = useState(route.params?.date)
     
     const orderNumber = "543645533653"
     const address = "nfoiwnfiwefnwoeifklndwsvjknsvjdfvnsdvdkv"
     const deliveryDate = "28/09/2023"
+    const valorProduct = "293,00"
+    const Subtotal = "100,00"
+    const frete = "50,00"
+    const payment = "BANCO BRADESCO [*6532] - Parcelado 2x"
 
     const mapProggress = [
         { title: 'Pedido entregue', isCurrent: false },
@@ -47,13 +50,44 @@ export default function OrderDetail({route}){
                             <View style={{height: 450, width: '90%'}}>
                                 <MapProgress data={mapProggress}/>
                             </View>
-                            <TouchableOpacity style={styles.map}>
-                                <Text style={styles.mapText}>Acompanhar no mapa</Text>
-                            </TouchableOpacity>
                         </View>
 
                         <View style={styles.headerDetail2}>
+                            {date2.map((item, index) => {
+                                return(
+                                    <View style={styles.orderItem} key={index}>
+                                        <Image source={{uri: item.image1}} style={styles.image}/>
+                                        <View>
+                                            <Text style={styles.nameProduct} numberOfLines={2} ellipsizeMode={"tail"}>{item.name}</Text>
+                                            <View style={{flexDirection: 'row'}}>
+                                                <Text style={styles.priceProduct}>R$ {item.price}</Text>
+                                                <Text style={styles.amountProduct}>x{item.soldAmount}</Text>   
+                                            </View>
+                                        </View>
+                                        
+                                    </View>
+                                )
+                            })}
+                            <View style={{flexDirection: 'row', width: '90%'}}>
+                                <Text style={styles.subtotal}>Subtotal dos produtos</Text>  
+                                <Text style={styles.subtotalPrice}>R$ {Subtotal}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', width: '90%'}}>
+                                <Text style={styles.frete}>Taxa do frete</Text>
+                                <Text style={styles.totalFrete}>R$ {frete}</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', width: '90%'}}>
+                                <Text style={styles.total}>Total</Text>
+                                <Text style={styles.totalPrice}>R$ {valorProduct}</Text>
+                            </View>  
+                        </View>
 
+                        <View style={styles.headerDetail2}>
+                            <View style={{flexDirection: 'row', alignItems: "center", marginBottom: 10, marginTop: 10}}>
+                                <IconF name="dollar" color={"#2799F3"} size={35}/>
+                                <Text style={styles.payment}>Método de pagamento</Text>
+                            </View>
+                            <Text style={styles.paymentmethod} numberOfLines={2} ellipsizeMode={"tail"}>{payment}</Text>
                         </View>
                     </View>
                 </ScrollView>
@@ -112,20 +146,6 @@ const styles = StyleSheet.create({
         width: '90%',
         marginBottom: 5
     },
-    map:{
-        width: "80%",
-        height: 45,
-        backgroundColor: '#2799F3',
-        marginBottom: 25,
-        borderRadius: 15,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    mapText:{
-        fontFamily: 'Montserrat-Bold',
-        fontSize: 17,
-        color: 'white'
-    },
     headerDetail2:{
         width: '90%',
         borderColor: '#D7D7D7',
@@ -133,5 +153,103 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 15,
         marginTop: 25
+    },
+    orderItem:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 20,
+        paddingBottom: 20,
+        width: '90%',
+        borderColor: '#D7D7D7',
+        borderBottomWidth: 1
+    },
+    image:{
+        height: 100,
+        width: 100
+    },
+    nameProduct:{
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 19,
+        color: 'black',
+        width: '73%',
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    priceProduct:{
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 19,
+        color: 'black',
+        width: '50%',
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    amountProduct:{
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 19,
+        color: 'black',
+        width: '40%',
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    subtotal:{
+        color: "#808080",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 18,
+        marginTop: 25,
+        width: "70%"
+    },
+    subtotalPrice:{
+        color: "#808080",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 18,
+        marginTop: 25,
+        width: "30%",
+        textAlign: 'right'
+    },
+    frete:{
+        color: "#808080",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 18,
+        marginTop: 10,
+        width: "70%"
+    },
+    totalFrete:{
+        color: "#808080",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 18,
+        marginTop: 10,
+        width: "30%",
+        textAlign: 'right'
+    },
+    total:{
+        color: "black",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 22,
+        marginTop: 10,
+        width: "60%",
+        marginBottom: 25
+    },
+    totalPrice:{
+        color: "black",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 22,
+        marginTop: 10,
+        width: "40%",
+        textAlign: 'right'
+    },
+    payment:{
+        color: "black",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 22,
+        width: "80%",
+        marginLeft: 10,
+        
+    },
+    paymentmethod:{
+        color: "#837F7F",
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 16,
+        width: "90%",
+        marginBottom: 10
     }
 })
